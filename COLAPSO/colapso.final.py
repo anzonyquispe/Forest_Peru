@@ -1,5 +1,4 @@
 import pandas as pd          # Manejo de tablas (CSV, Excel)
-import geopandas as gpd      # Leer shapefiles y datos geográficos
 from openpyxl import load_workbook  # Para editar Excel
 from openpyxl.styles import PatternFill, Font, Alignment  # Estilos
 from openpyxl.utils import get_column_letter             # Ancho columnas
@@ -13,29 +12,12 @@ from openpyxl.worksheet.table import Table, TableStyleInfo  # Tablas Excel
 # Ruta del dataset de denuncias
 ruta_csv = r"C:\era_data2\DATASET_Denuncias_Policiales_Enero 2018 a Octubre 2025.csv"
 
-# Ruta del shapefile distrital del INEI
-ruta_shp = r"C:\Users\Usuario\Downloads\Distrital INEI 2023 geogpsperu SuyoPomalia\Distrital INEI 2023 geogpsperu SuyoPomalia.shp"
+# Ruta del Excel con UBIGEO RENIEC que te mandó Karla
+ruta_ubigeo = r"C:\era_data2\ubigeo.xlsx"   # <-- AJUSTA ESTA RUTA SI ES NECESARIO
 
 
 # ===============================
-# 1. CARGAR SHAPEFILE
-# ===============================
-
-# Leer shapefile con geopandas
-shp = gpd.read_file(ruta_shp)
-
-# Asegurar que el UBIGEO tenga siempre 6 dígitos (ej: "10101" -> "010203")
-shp["UBIGEO"] = shp["UBIGEO"].astype(str).str.zfill(6)
-
-# Seleccionar únicamente las columnas relevantes del shapefile
-shp_simpl = shp[["UBIGEO", "DEPARTAMEN", "PROVINCIA", "DISTRITO"]].copy()
-
-# Renombrar columnas para que coincidan con el CSV
-shp_simpl.columns = ["ubigeo", "departamento_shp", "provincia_shp", "distrito_shp"]
-
-
-# ===============================
-# 2. CARGAR CSV (DENUNCIAS)
+# 1. CARGAR CSV (DENUNCIAS)
 # ===============================
 
 # Leer el CSV completo
@@ -55,24 +37,50 @@ df = df.rename(columns={
     "cantidad": "cantidad"
 })
 
-# Asegurar formato estándar del UBIGEO en el CSV
+# Asegurar formato estándar del UBIGEO en el CSV (6 dígitos)
 df["ubigeo"] = df["ubigeo"].astype(str).str.zfill(6)
 
 
 # ===============================
-# 3. UNIR SHAPEFILE + CSV
+# 2. CARGAR UBIGEO RENIEC
 # ===============================
 
-# Hacemos un merge por UBIGEO para obtener nombre de dep/prov/dist oficial INEI
-df = df.merge(shp_simpl, on="ubigeo", how="left")
+ub = pd.read_excel(ruta_ubigeo)
 
-# Preferir los nombres del shapefile (oficiales del INEI) si existen
-df["departamento"] = df["departamento_shp"].fillna(df["departamento"])
-df["provincia"] = df["provincia_shp"].fillna(df["provincia"])
-df["distrito"] = df["distrito_shp"].fillna(df["distrito"])
+# Asegurar que el ubigeo sea texto con 6 dígitos (ej: 10101 -> "010101")
+ub["ubigeo"] = ub["ubigeo"].astype(str).str.zfill(6)
 
-# Eliminar columnas auxiliares
-df = df.drop(columns=["departamento_shp", "provincia_shp", "distrito_shp"])
+# Renombrar columnas del Excel de Karla
+# Columnas del archivo: ubigeo, reg, prov, dist
+ub = ub.rename(columns={
+    "reg": "departamento_reniec",
+    "prov": "provincia_reniec",
+    "dist": "distrito_reniec"
+})
+
+# ===============================
+# 3. UNIR CSV + UBIGEO RENIEC
+# ===============================
+# A partir de aquí, TODOS los nombres de dep/prov/dist vienen de RENIEC
+
+df = df.merge(
+    ub[["ubigeo", "departamento_reniec", "provincia_reniec", "distrito_reniec"]],
+    on="ubigeo",
+    how="left"
+)
+
+# Reemplazar por los nombres RENIEC (aunque ya existan columnas originales)
+df["departamento"] = df["departamento_reniec"]
+df["provincia"] = df["provincia_reniec"]
+df["distrito"] = df["distrito_reniec"]
+
+# Borrar columnas auxiliares RENIEC
+df = df.drop(columns=["departamento_reniec", "provincia_reniec", "distrito_reniec"])
+
+
+# ===============================
+# FUNCIÓN PARA CREAR EXCEL FORMATEADO
+# ===============================
 
 def crear_excel_formateado(nombre_salida, dataframe):
     
@@ -115,17 +123,13 @@ def crear_excel_formateado(nombre_salida, dataframe):
 # ===============================
 # 4. COLAPSO 1 (ANUAL–DISTRITAL–MODALIDAD)
 # ===============================
-# ¿Qué hace este colapso?
-# 👉 Suma las denuncias por:
-#    - año
-#    - departamento
-#    - provincia
-#    - distrito
-#    - modalidad
-#    - ubigeo
-#
-# Este es el nivel más detallado.
-# Sirve para mapas por año o análisis completos.
+# Suma por:
+#  - año
+#  - departamento (RENIEC)
+#  - provincia (RENIEC)
+#  - distrito (RENIEC)
+#  - modalidad
+#  - ubigeo (RENIEC)
 
 colapso1 = (
     df.groupby(["año", "departamento", "provincia", "distrito", "modalidad", "ubigeo"])["cantidad"]
@@ -137,9 +141,6 @@ crear_excel_formateado(r"C:\era_data2\colapso1.xlsx", colapso1)
 # ===============================
 # 5. COLAPSO 2 (TOTAL ANUAL)
 # ===============================
-# ¿Qué hace este colapso?
-# 👉 Suma todas las denuncias de cada año.
-# permite ver tendencias criminales de 2018–2025.
 
 colapso2 = df.groupby("año")["cantidad"].sum().reset_index()
 crear_excel_formateado(r"C:\era_data2\colapso2.xlsx", colapso2)
@@ -148,13 +149,14 @@ crear_excel_formateado(r"C:\era_data2\colapso2.xlsx", colapso2)
 # ===============================
 # 6. COLAPSO 3 (AÑO × MODALIDAD)
 # ===============================
-# ¿Qué hace este colapso?
-# 👉 Suma denuncias por año y tipo de delito.
-# Permite analizar qué delitos suben/bajan cada año.
 
 colapso3 = df.groupby(["año", "modalidad"])["cantidad"].sum().reset_index()
 crear_excel_formateado(r"C:\era_data2\colapso3.xlsx", colapso3)
 
+
+# ===============================
+# 6.5. COLAPSO 4 (AÑO × DISTRITO)
+# ===============================
 
 colapso4 = (
     df.groupby(["año", "departamento", "provincia", "distrito", "ubigeo"])["cantidad"]
@@ -162,6 +164,10 @@ colapso4 = (
 )
 crear_excel_formateado(r"C:\era_data2\colapso4.xlsx", colapso4)
 
+
+# ===============================
+# 6.6. COLAPSO 5 (TOTAL POR DISTRITO)
+# ===============================
 
 colapso5 = (
     df.groupby(["departamento", "provincia", "distrito", "ubigeo"])["cantidad"]
@@ -173,13 +179,10 @@ crear_excel_formateado(r"C:\era_data2\colapso5.xlsx", colapso5)
 # ===============================
 # 7. GANADOR CRIMINAL (DELITO PREDOMINANTE)
 # ===============================
-# ¿Qué hace este colapso?
-# 👉 Calcula el delito con MAYOR número de denuncias acumuladas
-#    entre 2018–2025 para cada distrito (UBIGEO).
-#
-# Esta tabla es la base del MAPA CRIMINAL.
 
-temp = df.groupby(["ubigeo", "modalidad", "departamento", "provincia", "distrito"])["cantidad"].sum().reset_index()
+temp = df.groupby(
+    ["ubigeo", "modalidad", "departamento", "provincia", "distrito"]
+)["cantidad"].sum().reset_index()
 
 # Elegimos el delito con mayor cantidad por distrito
 ganador = temp.loc[temp.groupby("ubigeo")["cantidad"].idxmax()]
@@ -187,11 +190,14 @@ ganador = ganador.rename(columns={"modalidad": "modalidad_ganadora"})
 
 crear_excel_formateado(r"C:\era_data2\ganador_criminal.xlsx", ganador)
 
+
 # ===============================
 # FINAL
 # ===============================
-print("\n✔ TODOS LOS COLAPSOS GENERADOS CORRECTAMENTE:")
-print("   - colapso1.xlsx → año/provincia/distrito/modalidad")
+print("\n✔ TODOS LOS COLAPSOS GENERADOS CORRECTAMENTE (USANDO UBIGEO RENIEC):")
+print("   - colapso1.xlsx → año/provincia/distrito/modalidad (UBIGEO RENIEC)")
 print("   - colapso2.xlsx → totales por año")
 print("   - colapso3.xlsx → año × modalidad")
-print("   - ganador_criminal.xlsx → delito predominante por distrito\n")
+print("   - colapso4.xlsx → año × distrito (UBIGEO RENIEC)")
+print("   - colapso5.xlsx → totales por distrito (UBIGEO RENIEC)")
+print("   - ganador_criminal.xlsx → delito predominante por distrito (UBIGEO RENIEC)\n")
