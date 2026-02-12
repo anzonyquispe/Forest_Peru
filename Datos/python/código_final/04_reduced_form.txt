@@ -1,0 +1,178 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           turnover_org   R-squared:                       0.168
+Model:                            OLS   Adj. R-squared:                  0.141
+Method:                 Least Squares   F-statistic:                     1.885
+Date:                Sat, 07 Feb 2026   Prob (F-statistic):           5.28e-10
+Time:                        00:59:22   Log-Likelihood:                 1145.7
+No. Observations:                5010   AIC:                            -1981.
+Df Residuals:                    4855   BIC:                            -970.9
+Df Model:                         154                                         
+Covariance Type:                  HC1                                         
+=============================================================================================================
+                                                coef    std err          z      P>|z|      [0.025      0.975]
+-------------------------------------------------------------------------------------------------------------
+Intercept                                     0.0003      0.004      0.088      0.930      -0.007       0.008
+C(provincia)[T.Acobamba]                      0.2173      0.087      2.486      0.013       0.046       0.389
+C(provincia)[T.Aija]                      -7.532e-05      0.001     -0.088      0.930      -0.002       0.002
+C(provincia)[T.Alto Amazonas]                 0.0001      0.001      0.088      0.930      -0.002       0.002
+C(provincia)[T.Ambo]                       7.537e-05      0.001      0.088      0.930      -0.002       0.002
+C(provincia)[T.Andahuaylas]                -2.16e-05      0.000     -0.087      0.931      -0.001       0.000
+C(provincia)[T.Angaraes]                      0.2221      0.081      2.733      0.006       0.063       0.381
+C(provincia)[T.Antabamba]                 -8.507e-05      0.001     -0.088      0.930      -0.002       0.002
+C(provincia)[T.Antonio Raymondi]           1.568e-05      0.000      0.084      0.933      -0.000       0.000
+C(provincia)[T.Arequipa]                      0.0002      0.003      0.088      0.930      -0.005       0.006
+C(provincia)[T.Ascope]                     7.772e-05      0.001      0.088      0.930      -0.002       0.002
+C(provincia)[T.Asunción]                     -0.0001      0.002     -0.088      0.930      -0.003       0.003
+C(provincia)[T.Atalaya]                    7.348e-06   9.52e-05      0.077      0.938      -0.000       0.000
+C(provincia)[T.Ayabaca]                       0.1351      0.057      2.367      0.018       0.023       0.247
+C(provincia)[T.Aymaraes]                  -8.188e-05      0.001     -0.088      0.930      -0.002       0.002
+C(provincia)[T.Azángaro]                  -9.937e-05      0.001     -0.088      0.930      -0.002       0.002
+C(provincia)[T.Bagua]                     -2.774e-06   5.11e-05     -0.054      0.957      -0.000    9.73e-05
+C(provincia)[T.Bellavista]                -2.172e-05      0.000     -0.087      0.931      -0.001       0.000
+C(provincia)[T.Bolognesi]                    -0.0001      0.001     -0.088      0.930      -0.003       0.002
+C(provincia)[T.Bolívar]                      -0.0001      0.001     -0.088      0.930      -0.002       0.002
+C(provincia)[T.Bongará]                       0.1363      0.053      2.590      0.010       0.033       0.239
+C(provincia)[T.Cajabamba]                  4.732e-05      0.001      0.088      0.930      -0.001       0.001
+C(provincia)[T.Cajamarca]                     0.0500      0.029      1.749      0.080      -0.006       0.106
+C(provincia)[T.Cajatambo]                 -3.044e-05      0.000     -0.087      0.931      -0.001       0.001
+C(provincia)[T.Callao]                        0.0004      0.004      0.088      0.930      -0.008       0.009
+C(provincia)[T.Camaná]                        0.1092      0.043      2.549      0.011       0.025       0.193
+C(provincia)[T.Candarave]                    -0.0001      0.002     -0.088      0.930      -0.003       0.003
+C(provincia)[T.Cangallo]                     -0.0001      0.002     -0.088      0.930      -0.003       0.003
+C(provincia)[T.Canta]                         0.3333      0.087      3.812      0.000       0.162       0.505
+C(provincia)[T.Carabaya]                  -3.703e-05      0.000     -0.088      0.930      -0.001       0.001
+C(provincia)[T.Caravelí]                   3.517e-05      0.000      0.088      0.930      -0.001       0.001
+C(provincia)[T.Carhuaz]                   -3.989e-05      0.000     -0.087      0.930      -0.001       0.001
+C(provincia)[T.Carlos Fermín Fitzcarrald] -1.412e-05      0.000     -0.084      0.933      -0.000       0.000
+C(provincia)[T.Casma]                      8.894e-05      0.001      0.088      0.930      -0.002       0.002
+C(provincia)[T.Castilla]                  -1.809e-05      0.000     -0.087      0.931      -0.000       0.000
+C(provincia)[T.Castrovirreyna]                0.2221      0.100      2.231      0.026       0.027       0.417
+C(provincia)[T.Caylloma]                  -2.729e-05      0.000     -0.087      0.930      -0.001       0.001
+C(provincia)[T.Celendín]                   2.287e-06   4.48e-05      0.051      0.959   -8.55e-05    9.01e-05
+C(provincia)[T.Chachapoyas]                   0.2428      0.052      4.659      0.000       0.141       0.345
+C(provincia)[T.Chepén]                     4.732e-05      0.001      0.088      0.930      -0.001       0.001
+C(provincia)[T.Chiclayo]                   4.573e-05      0.001      0.088      0.930      -0.001       0.001
+C(provincia)[T.Chincha]                    1.443e-05      0.000      0.086      0.932      -0.000       0.000
+C(provincia)[T.Chincheros]                 -4.81e-05      0.001     -0.088      0.930      -0.001       0.001
+C(provincia)[T.Chota]                         0.1218      0.052      2.350      0.019       0.020       0.223
+C(provincia)[T.Chucuito]                     -0.0001      0.001     -0.088      0.930      -0.002       0.002
+C(provincia)[T.Churcampa]                 -7.986e-05      0.001     -0.088      0.930      -0.002       0.002
+C(provincia)[T.Concepción]                    0.1296      0.046      2.791      0.005       0.039       0.221
+C(provincia)[T.Condesuyos]                -3.449e-05      0.000     -0.088      0.930      -0.001       0.001
+C(provincia)[T.Condorcanqui]                  0.0002      0.002      0.088      0.930      -0.003       0.004
+C(provincia)[T.Contralmirante Villar]     -3.989e-05      0.000     -0.087      0.930      -0.001       0.001
+C(provincia)[T.Contumazá]                     0.1176      0.056      2.096      0.036       0.008       0.228
+C(provincia)[T.Coronel Portillo]              0.0001      0.001      0.088      0.930      -0.003       0.003
+C(provincia)[T.Corongo]                      -0.0002      0.002     -0.088      0.930      -0.004       0.003
+C(provincia)[T.Cotabambas]                -4.899e-06   6.91e-05     -0.071      0.943      -0.000       0.000
+C(provincia)[T.Cusco]                      4.713e-05      0.001      0.088      0.930      -0.001       0.001
+C(provincia)[T.Cutervo]                   -6.013e-05      0.001     -0.088      0.930      -0.001       0.001
+C(provincia)[T.Daniel Alcides Carrión]    -5.389e-05      0.001     -0.088      0.930      -0.001       0.001
+C(provincia)[T.Datem del Marañón]          7.558e-05      0.001      0.088      0.930      -0.002       0.002
+C(provincia)[T.Dos de Mayo]                  -0.0001      0.001     -0.088      0.930      -0.002       0.002
+C(provincia)[T.El Dorado]                 -4.486e-05      0.001     -0.088      0.930      -0.001       0.001
+C(provincia)[T.Ferreñafe]                     0.1945      0.067      2.902      0.004       0.063       0.326
+C(provincia)[T.General Sánchez Cerro]     -5.563e-05      0.001     -0.088      0.930      -0.001       0.001
+C(provincia)[T.Grau]                      -9.657e-05      0.001     -0.088      0.930      -0.002       0.002
+C(provincia)[T.Hualgayoc]                 -3.044e-05      0.000     -0.087      0.931      -0.001       0.001
+C(provincia)[T.Huallaga]                  -5.632e-05      0.001     -0.088      0.930      -0.001       0.001
+C(provincia)[T.Huamalíes]                  2.416e-05      0.000      0.087      0.930      -0.001       0.001
+C(provincia)[T.Huamanga]                  -2.457e-05      0.000     -0.088      0.930      -0.001       0.001
+C(provincia)[T.Huanca Sancos]             -6.896e-05      0.001     -0.088      0.930      -0.002       0.001
+C(provincia)[T.Huancabamba]                -5.17e-05      0.001     -0.088      0.930      -0.001       0.001
+C(provincia)[T.Huancané]                  -2.639e-05      0.000     -0.087      0.930      -0.001       0.001
+C(provincia)[T.Huancavelica]                  0.2499      0.098      2.541      0.011       0.057       0.443
+C(provincia)[T.Huancayo]                   7.472e-05      0.001      0.088      0.930      -0.002       0.002
+C(provincia)[T.Huanta]                    -7.925e-05      0.001     -0.088      0.930      -0.002       0.002
+C(provincia)[T.Huaraz]                     5.719e-06   7.35e-05      0.078      0.938      -0.000       0.000
+C(provincia)[T.Huari]                     -3.359e-05      0.000     -0.088      0.930      -0.001       0.001
+C(provincia)[T.Huarmey]                   -8.398e-05      0.001     -0.088      0.930      -0.002       0.002
+C(provincia)[T.Huaylas]                   -6.088e-05      0.001     -0.088      0.930      -0.001       0.001
+C(provincia)[T.Huaytará]                  -9.279e-05      0.001     -0.088      0.930      -0.002       0.002
+C(provincia)[T.Huánuco]                       0.0001      0.002      0.088      0.930      -0.003       0.003
+C(provincia)[T.Ica]                           0.1231      0.041      2.976      0.003       0.042       0.204
+C(provincia)[T.Ilo]                        3.884e-05      0.000      0.087      0.931      -0.001       0.001
+C(provincia)[T.Islay]                      8.345e-05      0.001      0.088      0.930      -0.002       0.002
+C(provincia)[T.Jauja]                         0.2917      0.094      3.095      0.002       0.107       0.476
+C(provincia)[T.Jaén]                          0.1111      0.040      2.763      0.006       0.032       0.190
+C(provincia)[T.Jorge Basadre]              7.978e-05      0.001      0.088      0.930      -0.002       0.002
+C(provincia)[T.Junín]                        -0.0001      0.002     -0.088      0.930      -0.003       0.003
+C(provincia)[T.La Mar]                        0.1220      0.052      2.349      0.019       0.020       0.224
+C(provincia)[T.La Unión]                      0.3333      0.074      4.510      0.000       0.188       0.478
+C(provincia)[T.Lamas]                     -5.339e-05      0.001     -0.088      0.930      -0.001       0.001
+C(provincia)[T.Lambayeque]                 7.176e-05      0.001      0.088      0.930      -0.002       0.002
+C(provincia)[T.Lampa]                     -3.155e-05      0.000     -0.088      0.930      -0.001       0.001
+C(provincia)[T.Leoncio Prado]              8.411e-05      0.001      0.088      0.930      -0.002       0.002
+C(provincia)[T.Lima]                          0.0519      0.017      3.015      0.003       0.018       0.086
+C(provincia)[T.Loreto]                        0.0001      0.002      0.088      0.930      -0.003       0.003
+C(provincia)[T.Lucanas]                    -1.19e-05      0.000     -0.085      0.933      -0.000       0.000
+C(provincia)[T.Luya]                      -6.088e-05      0.001     -0.088      0.930      -0.001       0.001
+C(provincia)[T.Manu]                      -3.989e-05      0.000     -0.087      0.930      -0.001       0.001
+C(provincia)[T.Marañón]                   -2.099e-05      0.000     -0.087      0.931      -0.000       0.000
+C(provincia)[T.Mariscal Cáceres]          -2.921e-06   5.32e-05     -0.055      0.956      -0.000       0.000
+C(provincia)[T.Mariscal Luzuriaga]           -0.0001      0.001     -0.088      0.930      -0.003       0.003
+C(provincia)[T.Mariscal Nieto]               -0.0001      0.001     -0.088      0.930      -0.003       0.002
+C(provincia)[T.Mariscal Ramón Castilla]    9.566e-05      0.001      0.088      0.930      -0.002       0.002
+C(provincia)[T.Maynas]                     8.386e-05      0.001      0.088      0.930      -0.002       0.002
+C(provincia)[T.Melgar]                     2.309e-05      0.000      0.087      0.931      -0.000       0.001
+C(provincia)[T.Moyobamba]                 -5.277e-05      0.001     -0.088      0.930      -0.001       0.001
+C(provincia)[T.Ocros]                        -0.0001      0.001     -0.088      0.930      -0.003       0.002
+C(provincia)[T.Otuzco]                    -4.225e-05      0.000     -0.088      0.930      -0.001       0.001
+C(provincia)[T.Oxapampa]                  -3.989e-05      0.000     -0.088      0.930      -0.001       0.001
+C(provincia)[T.Pacasmayo]                  3.278e-05      0.000      0.087      0.931      -0.001       0.001
+C(provincia)[T.Pachitea]                  -5.339e-05      0.001     -0.088      0.930      -0.001       0.001
+C(provincia)[T.Padre Abad]                 4.514e-05      0.001      0.088      0.930      -0.001       0.001
+C(provincia)[T.Pallasca]                      0.1025      0.049      2.077      0.038       0.006       0.199
+C(provincia)[T.Palpa]                     -9.387e-05      0.001     -0.088      0.930      -0.002       0.002
+C(provincia)[T.Parinacochas]              -7.898e-05      0.001     -0.088      0.930      -0.002       0.002
+C(provincia)[T.Pasco]                         0.3333      0.113      2.952      0.003       0.112       0.555
+C(provincia)[T.Pataz]                         0.1944      0.067      2.902      0.004       0.063       0.326
+C(provincia)[T.Picota]                       -0.0001      0.001     -0.088      0.930      -0.003       0.003
+C(provincia)[T.Pisco]                         0.3333      0.113      2.953      0.003       0.112       0.555
+C(provincia)[T.Piura]                         0.0002      0.002      0.088      0.930      -0.004       0.004
+C(provincia)[T.Pomabamba]                 -6.545e-06   8.72e-05     -0.075      0.940      -0.000       0.000
+C(provincia)[T.Puno]                        -7.4e-05      0.001     -0.088      0.930      -0.002       0.002
+C(provincia)[T.Putumayo]                  -8.713e-05      0.001     -0.088      0.930      -0.002       0.002
+C(provincia)[T.Páucar del Sara Sara]          0.1388      0.059      2.369      0.018       0.024       0.254
+C(provincia)[T.Recuay]                        0.1351      0.057      2.365      0.018       0.023       0.247
+C(provincia)[T.Requena]                    1.443e-06   4.44e-05      0.033      0.974   -8.55e-05    8.84e-05
+C(provincia)[T.Rioja]                         0.2223      0.081      2.733      0.006       0.063       0.382
+C(provincia)[T.Rodríguez de Mendoza]          0.0714      0.040      1.769      0.077      -0.008       0.150
+C(provincia)[T.San Ignacio]                4.005e-05      0.000      0.088      0.930      -0.001       0.001
+C(provincia)[T.San Marcos]                    0.2142      0.111      1.924      0.054      -0.004       0.433
+C(provincia)[T.San Martín]                -4.848e-05      0.001     -0.088      0.930      -0.001       0.001
+C(provincia)[T.San Miguel]                -1.332e-05      0.000     -0.086      0.932      -0.000       0.000
+C(provincia)[T.San Pablo]                     0.4118      0.121      3.396      0.001       0.174       0.649
+C(provincia)[T.Sandia]                    -6.212e-05      0.001     -0.088      0.930      -0.001       0.001
+C(provincia)[T.Santa]                         0.0002      0.002      0.088      0.930      -0.004       0.004
+C(provincia)[T.Santa Cruz]                   -0.0001      0.001     -0.088      0.930      -0.003       0.003
+C(provincia)[T.Santiago de Chuco]          3.892e-06   5.69e-05      0.068      0.946      -0.000       0.000
+C(provincia)[T.Sihuas]                    -5.563e-05      0.001     -0.088      0.930      -0.001       0.001
+C(provincia)[T.Sucre]                     -3.449e-05      0.000     -0.088      0.930      -0.001       0.001
+C(provincia)[T.Sánchez Carrión]               0.2307      0.084      2.749      0.006       0.066       0.395
+C(provincia)[T.Tacna]                     -8.038e-05      0.001     -0.088      0.930      -0.002       0.002
+C(provincia)[T.Tahuamanu]                 -3.989e-05      0.000     -0.088      0.930      -0.001       0.001
+C(provincia)[T.Tambopata]                  2.834e-05      0.000      0.087      0.931      -0.001       0.001
+C(provincia)[T.Tarata]                    -8.038e-05      0.001     -0.088      0.930      -0.002       0.002
+C(provincia)[T.Tarma]                         0.1111      0.048      2.334      0.020       0.018       0.204
+C(provincia)[T.Tayacaja]                  -2.189e-05      0.000     -0.087      0.931      -0.001       0.000
+C(provincia)[T.Tocache]                       0.0001      0.002      0.088      0.930      -0.003       0.003
+C(provincia)[T.Trujillo]                      0.1322      0.047      2.787      0.005       0.039       0.225
+C(provincia)[T.Tumbes]                     3.359e-05      0.000      0.087      0.930      -0.001       0.001
+C(provincia)[T.Ucayali]                    7.295e-05      0.001      0.088      0.930      -0.002       0.002
+C(provincia)[T.Utcubamba]                     0.2000      0.069      2.912      0.004       0.065       0.335
+C(provincia)[T.Vilcas Huamán]             -6.508e-05      0.001     -0.088      0.930      -0.002       0.001
+C(provincia)[T.Víctor Fajardo]                0.3437      0.085      4.030      0.000       0.177       0.511
+C(provincia)[T.Yungay]                        0.1429      0.055      2.605      0.009       0.035       0.250
+C(provincia)[T.Zarumilla]                    -0.0001      0.001     -0.088      0.930      -0.002       0.002
+orden_aparicion                           -9.447e-05      0.001     -0.088      0.930      -0.002       0.002
+==============================================================================
+Omnibus:                     3356.528   Durbin-Watson:                   0.444
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):            38168.096
+Skew:                           3.166   Prob(JB):                         0.00
+Kurtosis:                      14.948   Cond. No.                         593.
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity robust (HC1)

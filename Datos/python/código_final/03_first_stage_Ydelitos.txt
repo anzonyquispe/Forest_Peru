@@ -1,0 +1,19 @@
+     First Stage Estimation Results    
+=======================================
+                           turnover_org
+---------------------------------------
+R-squared                        0.0014
+Partial R-squared                0.0014
+Shea's R-squared                 0.0014
+Partial F-statistic              11.047
+P-value (Partial F-stat)         0.0009
+Partial F-stat Distn            chi2(1)
+==========================  ===========
+Intercept                        0.0588
+                               (11.405)
+orden_aparicion                 -0.0033
+                              (-3.3237)
+---------------------------------------
+
+T-stats reported in parentheses
+T-stats use same covariance type as original model

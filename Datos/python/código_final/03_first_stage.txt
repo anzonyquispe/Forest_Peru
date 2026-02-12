@@ -1,0 +1,325 @@
+             First Stage Estimation Results             
+========================================================
+                                            suma_delitos
+--------------------------------------------------------
+R-squared                                         0.5990
+Partial R-squared                                 0.0013
+Shea's R-squared                                  0.0013
+Partial F-statistic                               3.9942
+P-value (Partial F-stat)                          0.0457
+Partial F-stat Distn                             chi2(1)
+===========================================  ===========
+Intercept                                         728.06
+                                                (2.4328)
+C(provincia)[T.Acobamba]                         -826.94
+                                               (-3.5336)
+C(provincia)[T.Aija]                             -1020.8
+                                               (-4.3491)
+C(provincia)[T.Alto Amazonas]                     1619.8
+                                                (5.2634)
+C(provincia)[T.Ambo]                             -1015.6
+                                               (-4.3231)
+C(provincia)[T.Andahuaylas]                      -957.16
+                                               (-4.1989)
+C(provincia)[T.Angaraes]                         -404.10
+                                               (-1.6802)
+C(provincia)[T.Antabamba]                        -923.26
+                                               (-3.9860)
+C(provincia)[T.Antonio Raymondi]                 -1034.5
+                                               (-4.5021)
+C(provincia)[T.Arequipa]                       1.085e+04
+                                                (12.522)
+C(provincia)[T.Ascope]                           -1096.1
+                                               (-4.6781)
+C(provincia)[T.Asunción]                         -317.01
+                                               (-1.2976)
+C(provincia)[T.Atalaya]                          -52.393
+                                               (-0.1973)
+C(provincia)[T.Ayabaca]                          -964.13
+                                               (-4.2617)
+C(provincia)[T.Aymaraes]                         -210.29
+                                               (-0.7042)
+C(provincia)[T.Azángaro]                         -574.15
+                                               (-2.3293)
+C(provincia)[T.Bagua]                             1318.6
+                                                (1.6915)
+C(provincia)[T.Bellavista]                       -1030.2
+                                               (-4.5365)
+C(provincia)[T.Bolognesi]                        -915.81
+                                               (-3.8637)
+C(provincia)[T.Bolívar]                          -884.45
+                                               (-3.7815)
+C(provincia)[T.Bongará]                          -719.22
+                                               (-3.0017)
+C(provincia)[T.Cajabamba]                        -587.77
+                                               (-2.3487)
+C(provincia)[T.Cajamarca]                        -79.174
+                                               (-0.2615)
+C(provincia)[T.Cajatambo]                         1385.3
+                                                (5.9499)
+C(provincia)[T.Callao]                            117.52
+                                                (0.3111)
+C(provincia)[T.Camaná]                           -222.89
+                                               (-0.8044)
+C(provincia)[T.Candarave]                        -732.23
+                                               (-3.0392)
+C(provincia)[T.Cangallo]                         -853.01
+                                               (-3.5362)
+C(provincia)[T.Canta]                             1913.5
+                                                (4.4298)
+C(provincia)[T.Carabaya]                         -614.08
+                                               (-2.6607)
+C(provincia)[T.Caravelí]                         -944.77
+                                               (-4.1142)
+C(provincia)[T.Carhuaz]                          -1016.5
+                                               (-4.3013)
+C(provincia)[T.Carlos Fermín Fitzcarrald]        -659.80
+                                               (-2.4755)
+C(provincia)[T.Casma]                            -1137.5
+                                               (-4.7870)
+C(provincia)[T.Castilla]                         -917.78
+                                               (-4.0501)
+C(provincia)[T.Castrovirreyna]                   -242.62
+                                               (-0.9268)
+C(provincia)[T.Caylloma]                          706.75
+                                                (1.8517)
+C(provincia)[T.Celendín]                         -947.83
+                                               (-4.2013)
+C(provincia)[T.Chachapoyas]                      -857.94
+                                               (-3.7028)
+C(provincia)[T.Chepén]                           -316.39
+                                               (-1.2877)
+C(provincia)[T.Chiclayo]                       1.209e+04
+                                                (8.0095)
+C(provincia)[T.Chincha]                          -751.39
+                                               (-3.1687)
+C(provincia)[T.Chincheros]                       -967.86
+                                               (-4.2573)
+C(provincia)[T.Chota]                            -879.39
+                                               (-3.7317)
+C(provincia)[T.Chucuito]                         -506.73
+                                               (-2.0867)
+C(provincia)[T.Churcampa]                        -535.44
+                                               (-2.1894)
+C(provincia)[T.Concepción]                        2386.7
+                                                (4.1052)
+C(provincia)[T.Condesuyos]                       -911.23
+                                               (-3.9573)
+C(provincia)[T.Condorcanqui]                     -1226.8
+                                               (-4.8413)
+C(provincia)[T.Contralmirante Villar]            -1074.5
+                                               (-4.5588)
+C(provincia)[T.Contumazá]                        -994.66
+                                               (-4.3285)
+C(provincia)[T.Coronel Portillo]                  7031.3
+                                                (5.2092)
+C(provincia)[T.Corongo]                          -519.06
+                                               (-1.8778)
+C(provincia)[T.Cotabambas]                       -245.89
+                                               (-0.8214)
+C(provincia)[T.Cusco]                          1.479e+04
+                                                (5.5026)
+C(provincia)[T.Cutervo]                          -830.74
+                                               (-3.5090)
+C(provincia)[T.Daniel Alcides Carrión]           -987.64
+                                               (-4.3202)
+C(provincia)[T.Datem del Marañón]                -1108.8
+                                               (-4.7583)
+C(provincia)[T.Dos de Mayo]                      -948.01
+                                               (-4.0013)
+C(provincia)[T.El Dorado]                        -652.15
+                                               (-2.4511)
+C(provincia)[T.Ferreñafe]                         906.01
+                                                (2.6739)
+C(provincia)[T.General Sánchez Cerro]            -177.74
+                                               (-0.6141)
+C(provincia)[T.Grau]                             -214.16
+                                               (-0.8200)
+C(provincia)[T.Hualgayoc]                        -368.34
+                                               (-1.3043)
+C(provincia)[T.Huallaga]                         -801.23
+                                               (-3.4448)
+C(provincia)[T.Huamalíes]                        -1088.5
+                                               (-4.8210)
+C(provincia)[T.Huamanga]                          669.58
+                                                (1.8378)
+C(provincia)[T.Huanca Sancos]                    -947.11
+                                               (-4.0975)
+C(provincia)[T.Huancabamba]                       386.60
+                                                (1.3673)
+C(provincia)[T.Huancané]                         -575.60
+                                               (-2.3045)
+C(provincia)[T.Huancavelica]                   1.375e+04
+                                                (5.1835)
+C(provincia)[T.Huancayo]                          2725.3
+                                                (5.7013)
+C(provincia)[T.Huanta]                           -974.87
+                                               (-4.1930)
+C(provincia)[T.Huaraz]                           -340.03
+                                               (-1.0242)
+C(provincia)[T.Huari]                            -420.05
+                                               (-1.5170)
+C(provincia)[T.Huarmey]                          -994.87
+                                               (-4.2813)
+C(provincia)[T.Huaylas]                          -1010.9
+                                               (-4.3432)
+C(provincia)[T.Huaytará]                          1282.4
+                                                (1.4727)
+C(provincia)[T.Huánuco]                          -1172.5
+                                               (-4.8458)
+C(provincia)[T.Ica]                               2849.3
+                                                (2.9222)
+C(provincia)[T.Ilo]                              -453.22
+                                               (-1.8134)
+C(provincia)[T.Islay]                             524.50
+                                                (2.0852)
+C(provincia)[T.Jauja]                             1136.8
+                                                (2.4366)
+C(provincia)[T.Jaén]                             -621.95
+                                               (-2.6341)
+C(provincia)[T.Jorge Basadre]                    -972.89
+                                               (-3.9946)
+C(provincia)[T.Junín]                            -727.68
+                                               (-3.0124)
+C(provincia)[T.La Mar]                           -709.45
+                                               (-3.0091)
+C(provincia)[T.La Unión]                         -1004.0
+                                               (-4.4082)
+C(provincia)[T.Lamas]                            -971.99
+                                               (-4.2069)
+C(provincia)[T.Lambayeque]                       -1182.2
+                                               (-5.0809)
+C(provincia)[T.Lampa]                             1924.1
+                                                (3.9550)
+C(provincia)[T.Leoncio Prado]                    -1189.8
+                                               (-5.1178)
+C(provincia)[T.Lima]                              8386.1
+                                                (6.8731)
+C(provincia)[T.Loreto]                           -1253.2
+                                               (-5.1198)
+C(provincia)[T.Lucanas]                          -217.96
+                                               (-0.7287)
+C(provincia)[T.Luya]                             -1014.4
+                                               (-4.3727)
+C(provincia)[T.Manu]                             -989.49
+                                               (-4.1871)
+C(provincia)[T.Marañón]                          -933.08
+                                               (-4.0475)
+C(provincia)[T.Mariscal Cáceres]                 -508.41
+                                               (-1.7886)
+C(provincia)[T.Mariscal Luzuriaga]               -934.43
+                                               (-3.9342)
+C(provincia)[T.Mariscal Nieto]                    1562.6
+                                                (2.7179)
+C(provincia)[T.Mariscal Ramón Castilla]          -971.74
+                                               (-3.7290)
+C(provincia)[T.Maynas]                         6.594e+04
+                                                (14.531)
+C(provincia)[T.Melgar]                            790.29
+                                                (2.7223)
+C(provincia)[T.Moyobamba]                        -552.65
+                                               (-2.2759)
+C(provincia)[T.Ocros]                            -93.145
+                                               (-0.2526)
+C(provincia)[T.Otuzco]                           -620.45
+                                               (-2.5983)
+C(provincia)[T.Oxapampa]                         -276.99
+                                               (-1.1407)
+C(provincia)[T.Pacasmayo]                        -956.39
+                                               (-4.0126)
+C(provincia)[T.Pachitea]                         -789.06
+                                               (-3.4233)
+C(provincia)[T.Padre Abad]                       -956.02
+                                               (-4.1181)
+C(provincia)[T.Pallasca]                         -808.69
+                                               (-3.3641)
+C(provincia)[T.Palpa]                            -946.57
+                                               (-4.0438)
+C(provincia)[T.Parinacochas]                     -938.91
+                                               (-4.0775)
+C(provincia)[T.Pasco]                            -355.30
+                                               (-1.2518)
+C(provincia)[T.Pataz]                             2325.2
+                                                (3.0244)
+C(provincia)[T.Picota]                           -924.40
+                                               (-3.8733)
+C(provincia)[T.Pisco]                            -1122.0
+                                               (-4.9047)
+C(provincia)[T.Piura]                             183.93
+                                                (0.5332)
+C(provincia)[T.Pomabamba]                        -1072.5
+                                               (-4.6933)
+C(provincia)[T.Puno]                           1.078e+04
+                                                (4.5553)
+C(provincia)[T.Putumayo]                         -980.25
+                                               (-4.2136)
+C(provincia)[T.Páucar del Sara Sara]             -949.66
+                                               (-4.1338)
+C(provincia)[T.Recuay]                           -904.95
+                                               (-3.9669)
+C(provincia)[T.Requena]                          -748.20
+                                               (-2.9716)
+C(provincia)[T.Rioja]                            -1048.3
+                                               (-4.2926)
+C(provincia)[T.Rodríguez de Mendoza]             -780.32
+                                               (-3.3467)
+C(provincia)[T.San Ignacio]                      -1012.0
+                                               (-4.4399)
+C(provincia)[T.San Marcos]                       -1017.1
+                                               (-4.4292)
+C(provincia)[T.San Martín]                       -783.76
+                                               (-3.3973)
+C(provincia)[T.San Miguel]                       -864.87
+                                               (-3.8017)
+C(provincia)[T.San Pablo]                        -1039.8
+                                               (-4.5386)
+C(provincia)[T.Sandia]                           -384.32
+                                               (-1.5080)
+C(provincia)[T.Santa]                            -1290.2
+                                               (-5.1306)
+C(provincia)[T.Santa Cruz]                       -416.73
+                                               (-1.7034)
+C(provincia)[T.Santiago de Chuco]                -669.81
+                                               (-2.8464)
+C(provincia)[T.Sihuas]                           -1043.4
+                                               (-4.5870)
+C(provincia)[T.Sucre]                            -1020.4
+                                               (-4.5088)
+C(provincia)[T.Sánchez Carrión]                   3983.4
+                                                (5.0275)
+C(provincia)[T.Tacna]                             2.5726
+                                                (0.0109)
+C(provincia)[T.Tahuamanu]                        -1058.0
+                                               (-4.5895)
+C(provincia)[T.Tambopata]                        -1026.6
+                                               (-4.4625)
+C(provincia)[T.Tarata]                           -379.28
+                                               (-1.5792)
+C(provincia)[T.Tarma]                             1957.4
+                                                (4.7089)
+C(provincia)[T.Tayacaja]                         -949.86
+                                               (-4.1647)
+C(provincia)[T.Tocache]                          -1210.4
+                                               (-4.9182)
+C(provincia)[T.Trujillo]                          3645.3
+                                                (2.5628)
+C(provincia)[T.Tumbes]                            1313.5
+                                                (2.5863)
+C(provincia)[T.Ucayali]                           2196.8
+                                                (4.0581)
+C(provincia)[T.Utcubamba]                         165.78
+                                                (0.5689)
+C(provincia)[T.Vilcas Huamán]                    -996.03
+                                               (-4.3545)
+C(provincia)[T.Víctor Fajardo]                   -1006.9
+                                               (-4.4478)
+C(provincia)[T.Yungay]                           -1083.1
+                                               (-4.7689)
+C(provincia)[T.Zarumilla]                        -635.01
+                                               (-2.6725)
+orden_aparicion                                   116.48
+                                                (1.9985)
+--------------------------------------------------------
+
+T-stats reported in parentheses
+T-stats use same covariance type as original model

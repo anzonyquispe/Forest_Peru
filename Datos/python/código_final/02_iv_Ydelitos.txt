@@ -1,0 +1,21 @@
+                          IV-2SLS Estimation Summary                          
+==============================================================================
+Dep. Variable:           suma_delitos   R-squared:                     -10.263
+Estimator:                    IV-2SLS   Adj. R-squared:                -10.265
+No. Observations:                5010   F-statistic:                    9.2963
+Date:                Sat, Feb 07 2026   P-value (F-stat)                0.0023
+Time:                        01:56:44   Distribution:                  chi2(1)
+Cov. Estimator:                robust                                         
+                                                                              
+                              Parameter Estimates                               
+================================================================================
+              Parameter  Std. Err.     T-stat    P-value    Lower CI    Upper CI
+--------------------------------------------------------------------------------
+Intercept     1.116e+04     2576.2     4.3328     0.0000      6112.7   1.621e+04
+turnover_org   -1.7e+05  5.576e+04    -3.0490     0.0023  -2.793e+05  -6.072e+04
+================================================================================
+
+Endogenous: turnover_org
+Instruments: orden_aparicion
+Robust Covariance (Heteroskedastic)
+Debiased: False

@@ -1,0 +1,43 @@
+
+--- weak_instrument_test ---
+NO DISPONIBLE / NO APLICA: 'IVResults' object has no attribute 'weak_instrument_test'
+
+--- underidentification_test ---
+NO DISPONIBLE / NO APLICA: 'IVResults' object has no attribute 'underidentification_test'
+
+--- anderson_rubin ---
+Invalid test statistic
+Test requires more instruments than endogenous variables.
+Anderson-Rubin test of overidentification
+
+--- stock_wright ---
+NO DISPONIBLE / NO APLICA: 'IVResults' object has no attribute 'stock_wright'
+
+--- durbin ---
+Durbin test of exogeneity
+H0: All endogenous variables are exogenous
+Statistic: 0.0042
+P-value: 0.9481
+Distributed: chi2(1)
+
+--- wu_hausman ---
+Wu-Hausman test of exogeneity
+H0: All endogenous variables are exogenous
+Statistic: 0.0041
+P-value: 0.9489
+Distributed: F(1,4854)
+
+--- sargan ---
+Invalid test statistic
+Test requires more instruments than endogenous variables.
+Sargan's test of overidentification
+
+--- wooldridge_overid ---
+Invalid test statistic
+Test requires more instruments than endogenous variables.
+Wooldridge's score test of overidentification
+
+--- basmann ---
+Invalid test statistic
+Test requires more instruments than endogenous variables.
+Basmann's test of overidentification

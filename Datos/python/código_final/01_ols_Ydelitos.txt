@@ -1,0 +1,25 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:           suma_delitos   R-squared:                       0.001
+Model:                            OLS   Adj. R-squared:                  0.001
+Method:                 Least Squares   F-statistic:                     22.50
+Date:                Sat, 07 Feb 2026   Prob (F-statistic):           2.16e-06
+Time:                        02:02:21   Log-Likelihood:                -53771.
+No. Observations:                5010   AIC:                         1.075e+05
+Df Residuals:                    5008   BIC:                         1.076e+05
+Df Model:                           1                                         
+Covariance Type:                  HC1                                         
+================================================================================
+                   coef    std err          z      P>|z|      [0.025      0.975]
+--------------------------------------------------------------------------------
+Intercept     3294.0708    163.808     20.109      0.000    2973.014    3615.128
+turnover_org -1547.6605    326.261     -4.744      0.000   -2187.120    -908.201
+==============================================================================
+Omnibus:                     6199.663   Durbin-Watson:                   0.122
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):           755425.448
+Skew:                           6.813   Prob(JB):                         0.00
+Kurtosis:                      61.593   Cond. No.                         4.75
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity robust (HC1)
