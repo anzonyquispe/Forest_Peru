@@ -236,10 +236,10 @@ gen position_sq = position^2
 * 8. SAMPLE RESTRICTIONS
 * =========================================================
 
-keep if position <= 15
+*keep if position <= 15
 
-bysort year position: egen n_pos_year = count(position)
-keep if n_pos_year >= 30
+*bysort year position: egen n_pos_year = count(position)
+*keep if n_pos_year >= 30
 
 
 
@@ -333,6 +333,52 @@ estimates store m3_3
 * (4)
 reghdfe win c.position##i.movement c.position_sq##i.movement, absorb(ubigeo year org_pol_id) vce(cluster ubigeo)
 estimates store m3_4
+
+
+*Tabla 1
+
+esttab m1_1 m1_2 m1_3 m1_4, ///
+    b(%9.3f) se(%9.3f) star(* 0.10 ** 0.05 *** 0.01) ///
+    label compress nogaps ///
+    mtitles("(1)" "(2)" "(3)" "(4)") ///
+    title("Table 1. Effect of Position on Winning") ///
+    keep(position) ///
+    stats(district_fe year_fe org_fe N r2_a, ///
+          labels("District FE" "Election year FE" "Organization FE" "Observations" "Adj. R-squared"))
+
+
+*Tabla 2
+
+esttab m2_1 m2_2 m2_3 m2_4, ///
+    b(%9.3f) se(%9.3f) star(* 0.10 ** 0.05 *** 0.01) ///
+    label compress nogaps ///
+    mtitles("(1)" "(2)" "(3)" "(4)") ///
+    title("Table 2. Effect of Position by Movement") ///
+    keep(position 1.movement 1.movement#c.position) ///
+    order(position 1.movement 1.movement#c.position) ///
+    varlabels(position "Position" ///
+              1.movement "Movement" ///
+              1.movement#c.position "Position × Movement") ///
+    stats(district_fe year_fe org_fe N r2_a, ///
+          labels("District FE" "Election year FE" "Organization FE" "Observations" "Adj. R-squared"))
+		  
+*Tabla 3
+
+esttab m3_1 m3_2 m3_3 m3_4, ///
+    b(%9.3f) se(%9.3f) star(* 0.10 ** 0.05 *** 0.01) ///
+    label compress nogaps ///
+    mtitles("(1)" "(2)" "(3)" "(4)") ///
+    title("Table 3. Nonlinear effects") ///
+    keep(position position_sq 1.movement 1.movement#c.position 1.movement#c.position_sq) ///
+    order(position position_sq 1.movement 1.movement#c.position 1.movement#c.position_sq) ///
+    varlabels(position "Position" ///
+              position_sq "Position squared" ///
+              1.movement "Movement" ///
+              1.movement#c.position "Position × Movement" ///
+              1.movement#c.position_sq "Position² × Movement") ///
+    stats(district_fe year_fe org_fe N r2_a, ///
+          labels("District FE" "Election year FE" "Organization FE" "Observations" "Adj. R-squared"))
+
 
 
 
