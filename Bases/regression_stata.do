@@ -1,3 +1,5 @@
+
+clear all
 * =========================================================
 * 1. CONFIGURATION
 * =========================================================
@@ -267,6 +269,12 @@ display "Number of clusters: " `n_clusters'
 capture drop org_pol_id
 encode organizacion_politica, gen(org_pol_id)
 
+*******************************************************
+* SAVE ELECTORAL PANEL
+*******************************************************
+
+save electoral_panel.dta, replace
+
 * =========================================================
 * 10. MODEL SETS
 * =========================================================
@@ -382,21 +390,359 @@ esttab m3_1 m3_2 m3_3 m3_4, ///
 
 
 
+* HETEROGENEITY ANALYSIS
+* EDUCATION, LITERACY AND AGE (CENSUS 2007)
 
 
 
-	*Capturar desinteres politico*
+* 1. BUILD DISTRICT CHARACTERISTICS FROM CENSUS
+
+
+
+import excel "censo_distrital_inei.xlsx", ///
+firstrow clear
+
+capture destring ubigeo, replace
+
+
+
+rename EducaciónInicial EducacionInicial
+
+rename De0a4años age0_4
+rename De5a9años age5_9
+rename De10a14años age10_14
+rename De15a19años age15_19
+rename De20a24años age20_24
+rename De25a29años age25_29
+rename De30a34años age30_34
+rename De35a39años age35_39
+rename De40a44años age40_44
+rename De45a49años age45_49
+rename De50a54años age50_54
+rename De55a59años age55_59
+rename De60a64años age60_64
+rename De65a69años age65_69
+rename De70a74años age70_74
+rename De75a79años age75_79
+rename De80a84años age80_84
+rename De85a89años age85_89
+rename De90a94años age90_94
+rename De95a99años age95_99
+
+
+*TOTAL POPULATION
+capture drop population
+gen population = ///
+age0_4 + age5_9 + age10_14 + age15_19 + ///
+age20_24 + age25_29 + age30_34 + age35_39 + ///
+age40_44 + age45_49 + age50_54 + age55_59 + ///
+age60_64 + age65_69 + age70_74 + age75_79 + ///
+age80_84 + age85_89 + age90_94 + age95_99
+
+
+
+*EDUCATION
+gen educ_superior = ///
+SuperiorNoUnivincompleta + ///
+SuperiorNoUnivcompleta + ///
+SuperiorUnivincompleta + ///
+SuperiorUnivcompleta
+gen educ_superior_share = ///
+educ_superior/population
+gen sin_educ_share = ///
+SinNivel/population
+
+*LITERACY
+gen literacy_share = ///
+Sisabeleeryescribir/population
+gen illiteracy_share = ///
+Nosabeleeryescribir/population
+
+*AGE STRUCTURE
+gen young_pop = ///
+age0_4 + ///
+age5_9 + ///
+age10_14 + ///
+age15_19 + ///
+age20_24 + ///
+age25_29
+gen young_share = ///
+young_pop/population
+gen old_pop = ///
+age60_64 + ///
+age65_69 + ///
+age70_74 + ///
+age75_79 + ///
+age80_84 + ///
+age85_89 + ///
+age90_94 + ///
+age95_99
+gen old_share = ///
+old_pop/population
+
+
+*MEDIAN SPLITS
+summ educ_superior_share, detail
+gen high_educ = educ_superior_share >= r(p50)
+summ literacy_share, detail
+gen high_literacy = literacy_share >= r(p50)
+summ young_share, detail
+gen high_young = young_share >= r(p50)
+summ old_share, detail
+gen high_old = old_share >= r(p50)
+
+*DECILES
+xtile educ_decile = educ_superior_share, nq(10)
+xtile literacy_decile = literacy_share, nq(10)
+xtile young_decile = young_share, nq(10)
+xtile old_decile = old_share, nq(10)
+
+*SAVE FOR MERGE
+keep ubigeo ///
+educ_superior_share ///
+sin_educ_share ///
+literacy_share ///
+illiteracy_share ///
+young_share ///
+old_share ///
+high_educ ///
+high_literacy ///
+high_young ///
+high_old ///
+educ_decile ///
+literacy_decile ///
+young_decile ///
+old_decile
+save censo_heterogeneity.dta, replace
+
+
+
+*******************************************************
+* LOAD ELECTORAL PANEL
+*******************************************************
+
+use electoral_panel.dta, clear
+
+*******************************************************
+* MERGE CENSUS VARIABLES
+*******************************************************
+
+merge m:1 ubigeo using censo_heterogeneity.dta
+
+tab _merge
+
+keep if _merge==3
+drop _merge
+
+
+*******************************************************
+* TABLE 4
+* EDUCATION HETEROGENEITY
+*******************************************************
+
+* Continuous measure
+
+reghdfe win ///
+    c.position##c.educ_superior_share, ///
+    absorb(ubigeo year org_pol_id) ///
+    vce(cluster ubigeo)
+
+estimates store edu1
+
+* Above/below median
+
+reghdfe win ///
+    c.position##i.high_educ, ///
+    absorb(ubigeo year org_pol_id) ///
+    vce(cluster ubigeo)
+
+estimates store edu2
+
+esttab edu1 edu2, ///
+    b(%9.3f) se(%9.3f) ///
+    star(* 0.10 ** 0.05 *** 0.01) ///
+    keep(position ///
+         educ_superior_share ///
+         1.high_educ ///
+         c.position#c.educ_superior_share ///
+         1.high_educ#c.position) ///
+    title("Education Heterogeneity")
+
+
+*******************************************************
+* TABLE 5
+* LITERACY HETEROGENEITY
+*******************************************************
+
+reghdfe win ///
+    c.position##c.literacy_share, ///
+    absorb(ubigeo year org_pol_id) ///
+    vce(cluster ubigeo)
+
+estimates store lit1
+
+reghdfe win ///
+    c.position##i.high_literacy, ///
+    absorb(ubigeo year org_pol_id) ///
+    vce(cluster ubigeo)
+
+estimates store lit2
+
+esttab lit1 lit2, ///
+    b(%9.3f) se(%9.3f) ///
+    star(* 0.10 ** 0.05 *** 0.01) ///
+    keep(position ///
+         literacy_share ///
+         1.high_literacy ///
+         c.position#c.literacy_share ///
+         1.high_literacy#c.position) ///
+    title("Literacy Heterogeneity")
+
+*******************************************************
+* TABLE 6
+* AGE HETEROGENEITY
+*******************************************************
+
+reghdfe win ///
+    c.position##c.young_share, ///
+    absorb(ubigeo year org_pol_id) ///
+    vce(cluster ubigeo)
+
+estimates store age1
+
+reghdfe win ///
+    c.position##c.old_share, ///
+    absorb(ubigeo year org_pol_id) ///
+    vce(cluster ubigeo)
+
+estimates store age2
+
+esttab age1 age2, ///
+    b(%9.3f) se(%9.3f) ///
+    star(* 0.10 ** 0.05 *** 0.01) ///
+    keep(position ///
+         young_share ///
+         old_share ///
+         c.position#c.young_share ///
+         c.position#c.old_share) ///
+    title("Age Heterogeneity")
+
+
 	
+*******************************************************
+* SUMMARY TABLE OF INTERACTIONS
+*******************************************************
 
-	*Corrupcion - distrital
-	*GDP - nightlights - data armonized nightlights
-	*Educación
-	*Fenomenos naturales - shock - distrital 
+tempname results
+
+postfile `results' ///
+str30 interaction ///
+double coef ///
+double se ///
+double t ///
+double p ///
+using interactions_summary.dta, replace
+
+* Education share
+est restore edu1
+lincom c.position#c.educ_superior_share
+post `results' ///
+("Position × Education Share") ///
+(r(estimate)) ///
+(r(se)) ///
+(r(estimate)/r(se)) ///
+(r(p))
+
+* High education
+est restore edu2
+lincom 1.high_educ#c.position
+post `results' ///
+("Position × High Education") ///
+(r(estimate)) ///
+(r(se)) ///
+(r(estimate)/r(se)) ///
+(r(p))
+
+* Literacy share
+est restore lit1
+lincom c.position#c.literacy_share
+post `results' ///
+("Position × Literacy Share") ///
+(r(estimate)) ///
+(r(se)) ///
+(r(estimate)/r(se)) ///
+(r(p))
+
+* High literacy
+est restore lit2
+lincom 1.high_literacy#c.position
+post `results' ///
+("Position × High Literacy") ///
+(r(estimate)) ///
+(r(se)) ///
+(r(estimate)/r(se)) ///
+(r(p))
+
+* Young share
+est restore age1
+lincom c.position#c.young_share
+post `results' ///
+("Position × Young Share") ///
+(r(estimate)) ///
+(r(se)) ///
+(r(estimate)/r(se)) ///
+(r(p))
+
+* Old share
+est restore age2
+lincom c.position#c.old_share
+post `results' ///
+("Position × Old Share") ///
+(r(estimate)) ///
+(r(se)) ///
+(r(estimate)/r(se)) ///
+(r(p))
+
+postclose `results'
+
+use interactions_summary.dta, clear
+
+gen significance = ""
+replace significance = "***" if p < 0.01
+replace significance = "**"  if p >= 0.01 & p < 0.05
+replace significance = "*"   if p >= 0.05 & p < 0.10
+
+list, clean noobs
 
 
+*******************************************************
+* EXPORT SUMMARY TABLE TO LATEX
+*******************************************************
+
+use interactions_summary.dta, clear
+
+gen coef_se = ///
+    string(coef,"%9.4f") + ///
+    " (" + string(se,"%9.4f") + ")"
+
+gen stars = ""
+replace stars = "***" if p < 0.01
+replace stars = "**"  if p >= 0.01 & p < 0.05
+replace stars = "*"   if p >= 0.05 & p < 0.10
+
+replace coef_se = coef_se + stars
+
+keep interaction coef se t p coef_se
+
+list
+
+ssc install listtex, replace
 
 
-
+listtex interaction coef se t p ///
+using interactions_summary.tex, ///
+replace ///
+rstyle(tabular)
 
 
 
